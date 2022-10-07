@@ -10,11 +10,17 @@ import UIKit
 @main
 // Сгенерированый AppDelegate
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    var window: UIWindow?
+    private var tabBar = UITabBarController()
 
     func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
+        let tabBarController = MainTabBarController()
+        self.window?.rootViewController = tabBarController
+
+        window?.makeKeyAndVisible()
         return true
     }
 }

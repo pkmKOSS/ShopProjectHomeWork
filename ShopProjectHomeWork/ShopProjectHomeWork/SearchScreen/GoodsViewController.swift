@@ -29,6 +29,7 @@ final class GoodsViewController: UIViewController {
     // MARK: - private properties
 
     private var images: [UIImage?] = []
+    private var labelText: String
 
     // MARK: - life cycle
 
@@ -39,8 +40,12 @@ final class GoodsViewController: UIViewController {
 
     // MARK: - Инициализатор
 
-    init(images: [UIImage?]) {
+    init(
+        images: [UIImage?],
+        labelName: String
+    ) {
         self.images = images
+        self.labelText = labelName
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -66,6 +71,7 @@ final class GoodsViewController: UIViewController {
         addInfoAboutDeliveryLabel()
         addVariablesOfDeliveryLabel()
         configureNavBar()
+        addTapGestoreRecognizer()
     }
 
     // MARK: - private funcs
@@ -97,7 +103,7 @@ final class GoodsViewController: UIViewController {
             width: view.frame.width - 20,
             height: 20))
         goodsNameBigLabel.center.x = view.center.x
-        goodsNameBigLabel.text = Strings.goodsNameBigLabelText
+        goodsNameBigLabel.text = labelText
         goodsNameBigLabel.font = UIFont.boldSystemFont(ofSize: 15)
         goodsNameBigLabel.textColor = .white
         goodsNameBigLabel.textAlignment = .center
@@ -151,7 +157,7 @@ final class GoodsViewController: UIViewController {
             width: view.frame.width - 20,
             height: 20))
         goodsNameSmallLabel.center.x = view.center.x
-        goodsNameSmallLabel.text = Strings.goodsNameBigLabelText
+        goodsNameSmallLabel.text = labelText
         goodsNameSmallLabel.font = UIFont.systemFont(ofSize: 10)
         goodsNameSmallLabel.textColor = #colorLiteral(red: 0.579756263, green: 0.5644315212, blue: 0.6064749053, alpha: 1)
         goodsNameSmallLabel.textAlignment = .center
@@ -296,5 +302,18 @@ final class GoodsViewController: UIViewController {
         variablesOfDeliveryLabel.textAlignment = .left
         variablesOfDeliveryLabel.font = UIFont.systemFont(ofSize: 10)
         view.addSubview(variablesOfDeliveryLabel)
+    }
+
+    private func addTapGestoreRecognizer() {
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(doubleTapOnImageAcrion))
+        goodsImageScrollView.isUserInteractionEnabled = true
+        goodsImageScrollView.addGestureRecognizer(recognizer)
+    }
+
+    // MARK: - private @objc func
+
+    @objc private func doubleTapOnImageAcrion() {
+        let viewController = WebViewViewController(goodsLabelText: goodsNameBigLabel.text ?? "")
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }

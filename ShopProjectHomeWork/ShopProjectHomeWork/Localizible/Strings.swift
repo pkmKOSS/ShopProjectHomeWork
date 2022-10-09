@@ -14,7 +14,7 @@ enum Strings {
     static let clearButtonTitle = "Очистить"
     static let caselabelText = "Чехол Incase Flat для MacBook Pro 16 дюймов"
     static let clocklabelText = "Спортивный ремешок Black Unity"
-    static let bownCaseLabelText = "Кожанный чехол для MacBook Pro 16 дюймов, золотой"
+    static let brownCaseLabelText = "Кожанный чехол для MacBook Pro 16 дюймов, золотой"
     static let requestVariablesLabelText = "Варианты запросов"
     static let podslabelText = "AirPods"
     static let appleCarelabelText = "AppleCare"
@@ -34,4 +34,9 @@ enum Strings {
     static let addInBusketButtonTitleText = "MacBook Pro - Евгений"
     static let boxImageViewName = "cube.box"
     static let greenOkButtonImageName = "checkmark.circle"
+    static let backButtonImageName = "chevron.backward"
+    static let forwardButtonImageName = "chevron.forward"
+    static let reloadButtonImageName = "repeat"
+    static let shareButtonImageName = "chevron.backward"
+
 }

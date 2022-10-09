@@ -7,6 +7,8 @@
 
 import UIKit
 
+typealias SearchScreenTapAction = ((_ handler: [UIImage?], String) -> Void)
+
 /// Главный экран
 final class CommonSearchScreenViewController: UIViewController {
 
@@ -26,7 +28,7 @@ final class CommonSearchScreenViewController: UIViewController {
     // MARK: - private properties
 
     private var goodsScroolView = UIScrollView()
-    private var tapActionHandler: ((_ handler: [UIImage?]) -> Void)?
+    private var tapActionHandler: SearchScreenTapAction?
 
     // MARK: - life cycle
 
@@ -61,8 +63,9 @@ final class CommonSearchScreenViewController: UIViewController {
     }
 
     private func configTapAction() {
-        tapActionHandler = { [weak self] images in
-            let goodsViewController = GoodsViewController(images: images)
+        tapActionHandler = { [weak self] images, string in
+            print("configTapAction \(string)")
+            let goodsViewController = GoodsViewController(images: images, labelName: string)
             guard let self = self else { return }
             self.navigationController?.pushViewController(goodsViewController, animated: false)
         }

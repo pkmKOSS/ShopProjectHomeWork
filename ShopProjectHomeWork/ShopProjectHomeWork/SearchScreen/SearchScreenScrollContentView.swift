@@ -18,12 +18,12 @@ final class SearchScreenScrollContentView: UIView {
 
     // MARK: - private properties
 
-    private var tapActionHandler: ((_ handler: [UIImage?]) -> Void)?
+    private var tapActionHandler: ((_ handler: [UIImage?], String) -> Void)?
 
     // MARK: - Инициализатор
 
     init(frame: CGRect = CGRect(),
-         action: ((_ handler: [UIImage?]) -> Void)? = nil
+         action: ((_ handler: [UIImage?], String) -> Void)? = nil
     ) {
         self.tapActionHandler = action
         super.init(frame: frame)
@@ -51,10 +51,10 @@ final class SearchScreenScrollContentView: UIView {
                 height: 200
             ),
             images: [UIImage(named: "case1"),
-                             UIImage(named: "case2"),
-                             UIImage(named: "case3")],
+                     UIImage(named: "case2"),
+                     UIImage(named: "case3")],
             labelText: Strings.caselabelText,
-            tapActionHandler: tapActionHandler ?? { _ in _ = UIImage()}
+            tapActionHandler: tapActionHandler
         )
         macbookView.backgroundColor = #colorLiteral(red: 0.109885104, green: 0.1097899005, blue: 0.1180514768, alpha: 1)
         macbookView.layer.cornerRadius = 10
@@ -70,9 +70,9 @@ final class SearchScreenScrollContentView: UIView {
                 height: 200
             ),
             images: [UIImage(named: "clock1"),
-                             UIImage(named: "clock2")],
+                     UIImage(named: "clock2")],
             labelText: Strings.clocklabelText,
-            tapActionHandler: tapActionHandler ?? { _ in _ = UIImage()}
+            tapActionHandler: tapActionHandler
         )
         clockView.backgroundColor = #colorLiteral(red: 0.109885104, green: 0.1097899005, blue: 0.1180514768, alpha: 1)
         clockView.layer.cornerRadius = 10
@@ -88,10 +88,10 @@ final class SearchScreenScrollContentView: UIView {
                 height: 200
             ),
             images: [UIImage(named: "caseBrown1"),
-                             UIImage(named: "caseBrown2"),
-                             UIImage(named: "caseBrown3")],
-            labelText: Strings.bownCaseLabelText,
-            tapActionHandler: tapActionHandler ?? { _ in _ = UIImage()}
+                     UIImage(named: "caseBrown2"),
+                     UIImage(named: "caseBrown3")],
+            labelText: Strings.brownCaseLabelText,
+            tapActionHandler: tapActionHandler
         )
         brownCaseView.backgroundColor = #colorLiteral(red: 0.109885104, green: 0.1097899005, blue: 0.1180514768, alpha: 1)
         brownCaseView.layer.cornerRadius = 10

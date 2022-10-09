@@ -14,7 +14,11 @@ final class GoodsView: UIView {
 
     private var goodsImageView = UIImageView()
     private var goodsLabel = UILabel()
-    private var tapActionHandler: ((_ handler: UIImage) -> Void)?
+    private var images: [UIImage?] = []
+
+    // MARK: - private properties
+
+    private var tapActionHandler: ((_ handler: [UIImage?]) -> Void)?
 
     // MARK: - Инициализатор
 
@@ -30,12 +34,12 @@ final class GoodsView: UIView {
             width: 100,
             height: 100
         ),
-        image: UIImage = UIImage(),
+        images: [UIImage?] = [],
         labelText: String = "Unkown",
-        tapActionHandler: @escaping ((_ handler: UIImage) -> Void) = { _ in UIImage()}
+        tapActionHandler: @escaping ((_ handler: [UIImage?]) -> Void) = { _ in _ = []}
     ) {
         super.init(frame: frame)
-        self.goodsImageView.image = image
+        self.images = images
         self.goodsLabel.text = labelText
         self.tapActionHandler = tapActionHandler
         addGoodsImageView()
@@ -56,6 +60,7 @@ final class GoodsView: UIView {
             y: 25,
             width: 100,
             height: 100)
+        goodsImageView.image = images.first ?? UIImage()
         goodsImageView.contentMode = .scaleAspectFit
         addSubview(goodsImageView)
     }
@@ -83,6 +88,6 @@ final class GoodsView: UIView {
 
     @objc func tapOnImageAction() {
         guard let action = tapActionHandler else { return }
-        action(goodsImageView.image ?? UIImage())
+        action(images)
     }
 }

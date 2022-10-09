@@ -11,6 +11,7 @@ import UIKit
 final class RequestVariablesView: UIView {
 
     // MARK: - private visual components
+    
     private var searchImageView = UIImageView()
     private var searchVariablLabel = UILabel()
     private var grayLineView = UIView()

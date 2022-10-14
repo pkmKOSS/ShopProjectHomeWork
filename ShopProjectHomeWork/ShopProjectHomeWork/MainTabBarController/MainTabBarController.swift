@@ -32,7 +32,9 @@ final class MainTabBarController: UITabBarController {
     // MARK: - private funcs
 
     private func configureNavControllers() {
-        storeMainScreenNavViewController = UINavigationController(rootViewController: StoreMainScreenViewController())
+        storeMainScreenNavViewController = UINavigationController(
+            rootViewController: CommonSearchScreenViewController()
+        )
         buyScreenNavViewController = UINavigationController(rootViewController: BuyScreenViewController())
         forYouScreenNavViewController = UINavigationController(rootViewController: ForYouScreenViewController())
         buscetScreenNavViewController = UINavigationController(rootViewController: BuscetScreenViewController())

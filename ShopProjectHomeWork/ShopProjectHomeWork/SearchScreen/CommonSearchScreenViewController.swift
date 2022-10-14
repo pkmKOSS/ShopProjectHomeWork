@@ -8,7 +8,7 @@
 import UIKit
 
 /// Главный экран
-final class StoreMainScreenViewController: UIViewController {
+final class CommonSearchScreenViewController: UIViewController {
 
     // MARK: - private visual components
 
@@ -16,24 +16,27 @@ final class StoreMainScreenViewController: UIViewController {
     private var searchTextField = UITextField()
     private var seenRecentlyLabel = UILabel()
     private var clearButton = UIButton()
-    private var macbookView = GoodsView()
-    private var clockView = GoodsView()
-    private var airpodView = GoodsView()
     private var requestVariablesLabel = UILabel()
+    private var scrollViewContentView = SearchScreenScrollContentView()
     private var firstRequestVariablesView = RequestVariablesView()
     private var secondRequestVariablesView = RequestVariablesView()
     private var thirdRequestVariablesView = RequestVariablesView()
     private var foursRequestVariablesView = RequestVariablesView()
-    private var tapActionHandler: ((_ handler: UIImage) -> Void)?
+
+    // MARK: - private properties
+
+    private var goodsScroolView = UIScrollView()
+    private var tapActionHandler: ((_ handler: [UIImage?]) -> Void)?
 
     // MARK: - life cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureViews()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        configureViews()
+        configureNavBar()
     }
 
     // MARK: - private funcs
@@ -45,9 +48,7 @@ final class StoreMainScreenViewController: UIViewController {
         addSearchTextField()
         addSeenRecentlyLabel()
         addClearButton()
-        addMacbookCaseView()
-        addClockBeltView()
-        addBrownCaseView()
+        addGoodsScrollView()
         addRequestVariablesLabel()
         addFirstRequestVariablesView()
         addSecondRequestVariablesView()
@@ -55,11 +56,15 @@ final class StoreMainScreenViewController: UIViewController {
         addFoursRequestVariablesView()
     }
 
+    private func configureNavBar() {
+        navigationController?.navigationBar.backgroundColor = .clear
+    }
+
     private func configTapAction() {
-        tapActionHandler = {[weak self] image in
-            let forYouViewController = ForYouScreenViewController(image: image)
+        tapActionHandler = { [weak self] images in
+            let goodsViewController = GoodsViewController(images: images)
             guard let self = self else { return }
-            self.navigationController?.pushViewController(forYouViewController, animated: false)
+            self.navigationController?.pushViewController(goodsViewController, animated: false)
         }
     }
 
@@ -136,61 +141,33 @@ final class StoreMainScreenViewController: UIViewController {
         view.addSubview(clearButton)
     }
 
-    private func addMacbookCaseView() {
-        macbookView = GoodsView(
-            frame: CGRect(
-                x: searchLabel.frame.origin.x,
-                y: seenRecentlyLabel.frame.origin.y + seenRecentlyLabel.frame.height + 10,
-                width: 150,
-                height: 200
-            ),
-            image: UIImage(named: "case2") ?? UIImage(),
-            labelText: Strings.caselabelText,
-            tapActionHandler: tapActionHandler ?? { _ in UIImage()}
+    private func addGoodsScrollView() {
+        goodsScroolView = UIScrollView(frame: CGRect(
+            x: seenRecentlyLabel.frame.origin.x,
+            y: seenRecentlyLabel.frame.origin.y + seenRecentlyLabel.frame.height + 20,
+            width: view.frame.width - 40,
+            height: 200)
         )
-        macbookView.backgroundColor = #colorLiteral(red: 0.109885104, green: 0.1097899005, blue: 0.1180514768, alpha: 1)
-        macbookView.layer.cornerRadius = 10
-        view.addSubview(macbookView)
+        addScrollViewContentView()
+        goodsScroolView.contentSize = CGSize(
+            width: scrollViewContentView.bounds.width + 50,
+            height: goodsScroolView.frame.height
+        )
+        view.addSubview(goodsScroolView)
     }
 
-    private func addClockBeltView() {
-        clockView = GoodsView(
-            frame: CGRect(
-                x: 180,
-                y: macbookView.frame.origin.y,
-                width: 150,
-                height: 200
-            ),
-            image: UIImage(named: "clockBelt") ?? UIImage(),
-            labelText: Strings.clocklabelText,
-            tapActionHandler: tapActionHandler ?? { _ in UIImage()}
+    private func addScrollViewContentView() {
+        scrollViewContentView = SearchScreenScrollContentView(
+            frame: view.bounds,
+            action: tapActionHandler
         )
-        clockView.backgroundColor = #colorLiteral(red: 0.109885104, green: 0.1097899005, blue: 0.1180514768, alpha: 1)
-        clockView.layer.cornerRadius = 10
-        view.addSubview(clockView)
-    }
-
-    private func addBrownCaseView() {
-        airpodView = GoodsView(
-            frame: CGRect(
-                x: clockView.frame.origin.x + clockView.frame.width + 10,
-                y: macbookView.frame.origin.y,
-                width: 150,
-                height: 200
-            ),
-            image: UIImage(named: "macbook")  ?? UIImage(),
-            labelText: Strings.bownCaseLabelText,
-            tapActionHandler: tapActionHandler ?? { _ in UIImage()}
-        )
-        airpodView.backgroundColor = #colorLiteral(red: 0.109885104, green: 0.1097899005, blue: 0.1180514768, alpha: 1)
-        airpodView.layer.cornerRadius = 10
-        view.addSubview(airpodView)
+        goodsScroolView.addSubview(scrollViewContentView)
     }
 
     private func addRequestVariablesLabel() {
         requestVariablesLabel = UILabel(frame: CGRect(
             x: searchLabel.frame.origin.x,
-            y: macbookView.frame.origin.y + macbookView.frame.height + 50,
+            y: goodsScroolView.frame.origin.y + goodsScroolView.frame.height + 50,
             width: 400,
             height: 30)
         )

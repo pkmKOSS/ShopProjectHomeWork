@@ -50,9 +50,9 @@ final class SearchScreenScrollContentView: UIView {
                 width: 150,
                 height: 200
             ),
-            images: [UIImage(named: "case1"),
-                     UIImage(named: "case2"),
-                     UIImage(named: "case3")],
+            images: [UIImage(named: Strings.caseOneImageName),
+                     UIImage(named: Strings.caseTwoImageName),
+                     UIImage(named: Strings.caseThreeImageName)],
             labelText: Strings.caselabelText,
             tapActionHandler: tapActionHandler
         )
@@ -69,8 +69,8 @@ final class SearchScreenScrollContentView: UIView {
                 width: 150,
                 height: 200
             ),
-            images: [UIImage(named: "clock1"),
-                     UIImage(named: "clock2")],
+            images: [UIImage(named: Strings.clockOneImageName),
+                     UIImage(named: Strings.clockTwoImageName)],
             labelText: Strings.clocklabelText,
             tapActionHandler: tapActionHandler
         )
@@ -87,9 +87,9 @@ final class SearchScreenScrollContentView: UIView {
                 width: 150,
                 height: 200
             ),
-            images: [UIImage(named: "caseBrown1"),
-                     UIImage(named: "caseBrown2"),
-                     UIImage(named: "caseBrown3")],
+            images: [UIImage(named: Strings.firstBrownCaseImageName),
+                     UIImage(named: Strings.secondBrownCaseImageName),
+                     UIImage(named: Strings.thirdBrownCaseImageName)],
             labelText: Strings.brownCaseLabelText,
             tapActionHandler: tapActionHandler
         )

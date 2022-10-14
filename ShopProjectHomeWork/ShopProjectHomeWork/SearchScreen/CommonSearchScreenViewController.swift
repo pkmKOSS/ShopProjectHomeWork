@@ -64,7 +64,6 @@ final class CommonSearchScreenViewController: UIViewController {
 
     private func configTapAction() {
         tapActionHandler = { [weak self] images, string in
-            print("configTapAction \(string)")
             let goodsViewController = GoodsViewController(images: images, labelName: string)
             guard let self = self else { return }
             self.navigationController?.pushViewController(goodsViewController, animated: false)
@@ -112,7 +111,7 @@ final class CommonSearchScreenViewController: UIViewController {
             height: 25
         )
         button.tintColor = .lightGray
-        button.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
+        button.setImage(UIImage(systemName: Strings.itemFirstImageName), for: .normal)
 
         searchTextField.leftView = button
         searchTextField.leftViewMode = .always
@@ -189,7 +188,7 @@ final class CommonSearchScreenViewController: UIViewController {
                 width: 400,
                 height: 50
             ),
-            image: UIImage(systemName: "magnifyingglass")  ?? UIImage(),
+            image: UIImage(systemName: Strings.itemFirstImageName)  ?? UIImage(),
             labelText: Strings.podslabelText
         )
         firstRequestVariablesView.layer.cornerRadius = 10
@@ -204,7 +203,7 @@ final class CommonSearchScreenViewController: UIViewController {
                 width: 400,
                 height: 50
             ),
-            image: UIImage(systemName: "magnifyingglass")  ?? UIImage(),
+            image: UIImage(systemName: Strings.itemFirstImageName)  ?? UIImage(),
             labelText: Strings.appleCarelabelText
         )
         secondRequestVariablesView.layer.cornerRadius = 10
@@ -219,7 +218,7 @@ final class CommonSearchScreenViewController: UIViewController {
                 width: 400,
                 height: 50
             ),
-            image: UIImage(systemName: "magnifyingglass")  ?? UIImage(),
+            image: UIImage(systemName: Strings.itemFirstImageName)  ?? UIImage(),
             labelText: Strings.beatsLabelText
         )
         thirdRequestVariablesView.layer.cornerRadius = 10
@@ -234,7 +233,7 @@ final class CommonSearchScreenViewController: UIViewController {
                 width: 400,
                 height: 50
             ),
-            image: UIImage(systemName: "magnifyingglass")  ?? UIImage(),
+            image: UIImage(systemName: Strings.itemFirstImageName)  ?? UIImage(),
             labelText: Strings.compareLabelText
         )
         foursRequestVariablesView.layer.cornerRadius = 10

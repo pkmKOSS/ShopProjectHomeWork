@@ -5,7 +5,6 @@
 //  Created by Григоренко Александр Игоревич on 14.10.2022.
 //
 
-import Foundation
 import UIKit
 
 /// Представление с информацией о текущем статусе заказа.
@@ -55,7 +54,7 @@ final class OrderStatusView: UIView {
             y: 15,
             width: 50,
             height: 50)
-        goodsImageView.image = UIImage(named: "airpods")
+        goodsImageView.image = UIImage(named: Strings.goodsImageViewIamgeName)
         goodsImageView.backgroundColor = .gray
         goodsImageView.contentMode = .scaleAspectFit
         addSubview(goodsImageView)
@@ -67,7 +66,7 @@ final class OrderStatusView: UIView {
             y: goodsImageView.frame.origin.y - 5,
             width: 200,
             height: 20))
-        orderStatusLabel.text = "Ваш заказ отправлен."
+        orderStatusLabel.text = Strings.orderStatusLabelText
         orderStatusLabel.lineBreakMode = .byWordWrapping
         orderStatusLabel.numberOfLines = 0
         orderStatusLabel.font = UIFont.boldSystemFont(ofSize: 15)
@@ -82,7 +81,7 @@ final class OrderStatusView: UIView {
             y: orderStatusLabel.frame.origin.y + orderStatusLabel.frame.height,
             width: 200,
             height: 20))
-        goodsInfoLabel.text = "1 товар, доставка завтра"
+        goodsInfoLabel.text = Strings.goodsInfoLabelText
         goodsInfoLabel.lineBreakMode = .byWordWrapping
         goodsInfoLabel.numberOfLines = 0
         goodsInfoLabel.font = UIFont.boldSystemFont(ofSize: 15)
@@ -97,7 +96,7 @@ final class OrderStatusView: UIView {
             y: orderStatusLabel.frame.origin.y + orderStatusLabel.frame.height - 10,
             width: 30,
             height: 30))
-        forwardButtonButton.setImage(UIImage(systemName: "chevron.forward"), for: .normal)
+        forwardButtonButton.setImage(UIImage(systemName: Strings.forwardButtonImageName), for: .normal)
         forwardButtonButton.tintColor = .lightGray
         addSubview(forwardButtonButton)
     }
@@ -130,7 +129,7 @@ final class OrderStatusView: UIView {
             y: deliveryProgressView.frame.origin.y + deliveryProgressView.frame.height + 5,
             width: 100,
             height: 20))
-        proccesedLabel.text = "Обрабатывается"
+        proccesedLabel.text = Strings.proccesedLabelText
         proccesedLabel.lineBreakMode = .byWordWrapping
         proccesedLabel.numberOfLines = 0
         proccesedLabel.font = UIFont.boldSystemFont(ofSize: 10)
@@ -146,7 +145,7 @@ final class OrderStatusView: UIView {
             width: 100,
             height: 20))
         sendedLabel.center.x = deliveryProgressView.center.x
-        sendedLabel.text = "Отправлено"
+        sendedLabel.text = Strings.sendedLabelText
         sendedLabel.lineBreakMode = .byWordWrapping
         sendedLabel.numberOfLines = 0
         sendedLabel.textAlignment = .center
@@ -161,7 +160,7 @@ final class OrderStatusView: UIView {
             y: proccesedLabel.frame.origin.y,
             width: 100,
             height: 20))
-        deliveredLabel.text = "Доставлено"
+        deliveredLabel.text = Strings.deliveredLabelText
         deliveredLabel.lineBreakMode = .byWordWrapping
         deliveredLabel.numberOfLines = 0
         deliveredLabel.font = UIFont.boldSystemFont(ofSize: 10)

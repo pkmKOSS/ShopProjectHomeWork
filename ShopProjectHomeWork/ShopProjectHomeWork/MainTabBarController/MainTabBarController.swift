@@ -53,10 +53,10 @@ final class MainTabBarController: UITabBarController {
     }
 
     private func configureTabBarItems() {
-        let item1 = UITabBarItem(title: "Поиск", image: UIImage(systemName: "magnifyingglass"), tag: 0)
-        let item2 = UITabBarItem(title: "Для Вас", image: UIImage(systemName: "person.crop.circle.fill"), tag: 1)
-        let item3 = UITabBarItem(title: "Купить", image: UIImage(named: "laptop"), tag: 2)
-        let item4 = UITabBarItem(title: "Корзина", image: UIImage(systemName: "case"), tag: 3)
+        let item1 = UITabBarItem(title: Strings.itemFirstTitleName, image: UIImage(systemName: Strings.itemFirstImageName), tag: 0)
+        let item2 = UITabBarItem(title: Strings.itemSecondTitleName, image: UIImage(systemName: Strings.itemSecondImageName), tag: 1)
+        let item3 = UITabBarItem(title: Strings.itemBasketTitleName, image: UIImage(systemName: Strings.itemBasketImageName), tag: 3)
+        let item4 = UITabBarItem(title: Strings.itemBuyTitleName, image: UIImage(named: Strings.itemBuyImageName), tag: 2)
 
         storeMainScreenNavViewController.tabBarItem = item1
         buyScreenNavViewController.tabBarItem = item2

@@ -35,7 +35,6 @@ final class WebViewViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureViews()
-        loadWebShop()
     }
 
     // MARK: - Инициализатор
@@ -52,6 +51,7 @@ final class WebViewViewController: UIViewController {
     // MARK: - private funcs
 
     private func configureViews() {
+        self.navigationController?.navigationBar.backgroundColor = .white
         addWebShopWKWebView()
         configureHandlers()
         addWebShopWKWebView()
@@ -82,6 +82,7 @@ final class WebViewViewController: UIViewController {
             )
             self.navigationController?.present(activityController, animated: false)
         }
+        loadWebShop()
     }
 
     private func addWebShopWKWebView() {

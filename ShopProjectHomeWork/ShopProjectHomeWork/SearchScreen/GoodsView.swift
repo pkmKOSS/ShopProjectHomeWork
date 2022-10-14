@@ -35,7 +35,7 @@ final class GoodsView: UIView {
             height: 100
         ),
         images: [UIImage?] = [],
-        labelText: String = "Unkown",
+        labelText: String = Strings.unkownText,
         tapActionHandler: SearchScreenTapAction? = nil
     ) {
         self.images = images

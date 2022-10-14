@@ -27,7 +27,7 @@ final class RequestVariablesView: UIView {
                                width: 100,
                                height: 100),
         image: UIImage = UIImage(),
-        labelText: String = "Unkown"
+        labelText: String = Strings.unkownText
     ) {
         super.init(frame: frame)
         self.searchImageView.image = image

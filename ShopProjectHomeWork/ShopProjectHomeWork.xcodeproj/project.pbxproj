@@ -12,6 +12,7 @@
 		6B39F77B28F1CB1500B66EDC /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B39F77A28F1CB1500B66EDC /* MainTabBarController.swift */; };
 		6B39F78028F2E68100B66EDC /* SearchScreenScrollContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B39F77F28F2E68100B66EDC /* SearchScreenScrollContentView.swift */; };
 		6B39F78228F2F1E800B66EDC /* GoodsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B39F78128F2F1E800B66EDC /* GoodsViewController.swift */; };
+		6B8359F928F9247800A8931E /* OrderStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8359F828F9247800A8931E /* OrderStatusView.swift */; };
 		6BBC467C28EFCD2100EA2F46 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBC467B28EFCD2100EA2F46 /* AppDelegate.swift */; };
 		6BBC468028EFCD2100EA2F46 /* CommonSearchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBC467F28EFCD2100EA2F46 /* CommonSearchScreenViewController.swift */; };
 		6BBC468528EFCD2500EA2F46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BBC468428EFCD2500EA2F46 /* Assets.xcassets */; };
@@ -31,6 +32,7 @@
 		6B39F77A28F1CB1500B66EDC /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		6B39F77F28F2E68100B66EDC /* SearchScreenScrollContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenScrollContentView.swift; sourceTree = "<group>"; };
 		6B39F78128F2F1E800B66EDC /* GoodsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsViewController.swift; sourceTree = "<group>"; };
+		6B8359F828F9247800A8931E /* OrderStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderStatusView.swift; sourceTree = "<group>"; };
 		6BBC467828EFCD2100EA2F46 /* ShopProjectHomeWork.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShopProjectHomeWork.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BBC467B28EFCD2100EA2F46 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6BBC467F28EFCD2100EA2F46 /* CommonSearchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonSearchScreenViewController.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				6BBC46A128EFF63A00EA2F46 /* ForYouScreenViewController.swift */,
+				6B8359F828F9247800A8931E /* OrderStatusView.swift */,
 			);
 			path = ForYouScreen;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 				6BBC469628EFD4F900EA2F46 /* GoodsView.swift in Sources */,
 				6BBC469828EFE51500EA2F46 /* RequestVariablesView.swift in Sources */,
 				6B39F78228F2F1E800B66EDC /* GoodsViewController.swift in Sources */,
+				6B8359F928F9247800A8931E /* OrderStatusView.swift in Sources */,
 				6BBC46A028EFF62A00EA2F46 /* BuscetScreenViewController.swift in Sources */,
 				6BBC467C28EFCD2100EA2F46 /* AppDelegate.swift in Sources */,
 				6B14962028F8767D00B3D6F2 /* Links.swift in Sources */,

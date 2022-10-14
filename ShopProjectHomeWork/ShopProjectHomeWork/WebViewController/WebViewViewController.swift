@@ -36,6 +36,7 @@ final class WebViewViewController: UIViewController {
         super.viewWillAppear(animated)
         configureViews()
         loadWebShop()
+        navigationController?.navigationBar.isHidden = true
     }
 
     // MARK: - Инициализатор

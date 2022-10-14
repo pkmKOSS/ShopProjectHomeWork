@@ -73,7 +73,7 @@ final class ForYouScreenViewController: UIViewController {
             y: 150,
             width: 200,
             height: 35))
-        forYouLabel.text = "Для вас"
+        forYouLabel.text = Strings.forYouLabelText
         forYouLabel.font = UIFont.boldSystemFont(ofSize: 35)
         forYouLabel.textColor = .black
         forYouLabel.textAlignment = .left
@@ -86,7 +86,7 @@ final class ForYouScreenViewController: UIViewController {
             y: 0,
             width: 40,
             height: 40)
-        avatarImageView.image = UIImage()
+        avatarImageView.image = loadAvatarImage()
         avatarImageView.clipsToBounds = true
         avatarImageView.layer.cornerRadius = avatarImageView.frame.size.width/2
         avatarImageView.backgroundColor = .gray
@@ -99,8 +99,8 @@ final class ForYouScreenViewController: UIViewController {
         topGreyLineView.frame = CGRect(
             x: forYouLabel.frame.origin.x,
             y: forYouLabel.frame.origin.y + forYouLabel.frame.height + 10,
-            width: view.frame.width - 30,
-            height: 1)
+            width: view.frame.width - 45,
+            height: 0.5)
         topGreyLineView.backgroundColor = .lightGray
         view.addSubview(topGreyLineView)
     }
@@ -111,7 +111,7 @@ final class ForYouScreenViewController: UIViewController {
             y: topGreyLineView.frame.origin.y + topGreyLineView.frame.height + 30,
             width: view.frame.width - 20,
             height: 30))
-        whatNewLabel.text = "Вот что нового"
+        whatNewLabel.text = Strings.whatNewLabelText
         whatNewLabel.font = UIFont.boldSystemFont(ofSize: 35)
         whatNewLabel.textColor = .black
         whatNewLabel.textAlignment = .left
@@ -149,7 +149,7 @@ final class ForYouScreenViewController: UIViewController {
             y: orderStatusView.frame.origin.y + orderStatusView.frame.height + 70,
             width: view.frame.width - 20,
             height: 20))
-        recomentForYouLabel.text = "Рекомендуется вам"
+        recomentForYouLabel.text = Strings.recomentForYouLabelText
         recomentForYouLabel.font = UIFont.boldSystemFont(ofSize: 25)
         recomentForYouLabel.textColor = .black
         recomentForYouLabel.textAlignment = .left
@@ -162,7 +162,7 @@ final class ForYouScreenViewController: UIViewController {
             y: recomentForYouLabel.frame.origin.y + recomentForYouLabel.frame.height + 50,
             width: 40,
             height: 40))
-        notificationImageView.image = UIImage(named: "square")
+        notificationImageView.image = UIImage(named: Strings.notificationImageViewName)
         notificationImageView.backgroundColor = .lightGray
         view.addSubview(notificationImageView)
     }
@@ -173,7 +173,7 @@ final class ForYouScreenViewController: UIViewController {
             y: notificationImageView.frame.origin.y,
             width: 250,
             height: 40))
-        getNewsLabel.text = "Получайте новости о совем зазказе в режиме реального времени."
+        getNewsLabel.text = Strings.getNewsLabelText
         getNewsLabel.lineBreakMode = .byWordWrapping
         getNewsLabel.numberOfLines = 0
         getNewsLabel.font = UIFont.boldSystemFont(ofSize: 15)
@@ -188,7 +188,7 @@ final class ForYouScreenViewController: UIViewController {
             y: getNewsLabel.frame.origin.y + getNewsLabel.frame.height + 5,
             width: 250,
             height: 40))
-        activateNotificationLabel.text = "Включите уведомления чтобы получать новости о совем заказе."
+        activateNotificationLabel.text = Strings.activateNotificationLabelText
         activateNotificationLabel.lineBreakMode = .byWordWrapping
         activateNotificationLabel.numberOfLines = 0
         activateNotificationLabel.font = UIFont.systemFont(ofSize: 13)
@@ -203,7 +203,7 @@ final class ForYouScreenViewController: UIViewController {
             y: getNewsLabel.frame.origin.y + getNewsLabel.frame.height - 10,
             width: 30,
             height: 30))
-        notificationButton.setImage(UIImage(systemName: "chevron.forward"), for: .normal)
+        notificationButton.setImage(UIImage(systemName: Strings.notificationButtonIamgeName), for: .normal)
         notificationButton.tintColor = .lightGray
         view.addSubview(notificationButton)
     }
@@ -224,7 +224,7 @@ final class ForYouScreenViewController: UIViewController {
             y: bottomGreyLineView.frame.origin.y + bottomGreyLineView.frame.height + 40,
             width: 300,
             height: 20))
-        yourDevicesLabel.text = "ваши устройства"
+        yourDevicesLabel.text = Strings.yourDevicesLabelText
         yourDevicesLabel.font = UIFont.boldSystemFont(ofSize: 20)
         yourDevicesLabel.textColor = .black
         yourDevicesLabel.textAlignment = .left
@@ -239,7 +239,7 @@ final class ForYouScreenViewController: UIViewController {
             height: 30))
 
         showAllDevicesLabel.textColor = .link
-        showAllDevicesLabel.text = "Показать все"
+        showAllDevicesLabel.text = Strings.showAllDevicesLabelText
         showAllDevicesLabel.font = UIFont.systemFont(ofSize: 15)
         view.addSubview(showAllDevicesLabel)
     }
@@ -248,6 +248,21 @@ final class ForYouScreenViewController: UIViewController {
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(setImageAction))
         avatarImageView.isUserInteractionEnabled = true
         avatarImageView.addGestureRecognizer(tapRecognizer)
+    }
+
+    private func saveAvatarImage() {
+        guard let image = avatarImageView.image else { return }
+        guard let data = image.jpegData(compressionQuality: 1.0) else { return }
+        let encoded = try? PropertyListEncoder().encode(data)
+        UserDefaults.standard.set(encoded, forKey: "KEY")
+    }
+
+    private func loadAvatarImage() -> UIImage {
+        let defaultImage = UIImage()
+        guard let data = UserDefaults.standard.data(forKey: "KEY") else { return defaultImage }
+        guard let decoded = try? PropertyListDecoder().decode(Data.self, from: data) else { return defaultImage }
+        guard let image = UIImage(data: decoded) else { return  defaultImage }
+        return image
     }
 
     // MARK: @objc private func
@@ -259,6 +274,7 @@ final class ForYouScreenViewController: UIViewController {
     }
 }
 
+// методы UIImagePickerControllerDelegate
 extension ForYouScreenViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(
         _ picker: UIImagePickerController,
@@ -266,6 +282,7 @@ extension ForYouScreenViewController: UIImagePickerControllerDelegate, UINavigat
     ) {
         guard let image = info[.originalImage] as? UIImage else { return }
         avatarImageView.image = image
+        saveAvatarImage()
         navigationController?.dismiss(animated: true)
     }
 }

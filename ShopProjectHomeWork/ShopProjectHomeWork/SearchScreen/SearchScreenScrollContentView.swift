@@ -87,9 +87,9 @@ final class SearchScreenScrollContentView: UIView {
                 width: 150,
                 height: 200
             ),
-            images: [UIImage(named: "caseBrown1"),
-                     UIImage(named: "caseBrown2"),
-                     UIImage(named: "caseBrown3")],
+            images: [UIImage(named: Strings.firstBrownCaseImageName),
+                     UIImage(named: Strings.secondBrownCaseImageName),
+                     UIImage(named: Strings.thirdBrownCaseImageName)],
             labelText: Strings.brownCaseLabelText,
             tapActionHandler: tapActionHandler
         )

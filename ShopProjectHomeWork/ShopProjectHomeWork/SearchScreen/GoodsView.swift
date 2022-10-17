@@ -18,7 +18,7 @@ final class GoodsView: UIView {
 
     // MARK: - private properties
 
-    private var tapActionHandler: ((_ handler: [UIImage?]) -> Void)?
+    private var tapActionHandler: SearchScreenTapAction?
 
     // MARK: - Инициализатор
 
@@ -36,12 +36,12 @@ final class GoodsView: UIView {
         ),
         images: [UIImage?] = [],
         labelText: String = "Unkown",
-        tapActionHandler: @escaping ((_ handler: [UIImage?]) -> Void) = { _ in _ = []}
+        tapActionHandler: SearchScreenTapAction? = nil
     ) {
-        super.init(frame: frame)
         self.images = images
         self.goodsLabel.text = labelText
         self.tapActionHandler = tapActionHandler
+        super.init(frame: frame)
         addGoodsImageView()
         addGoodsLabel()
         addGestureRecognizerOnGoodsImageView()
@@ -88,6 +88,6 @@ final class GoodsView: UIView {
 
     @objc func tapOnImageAction() {
         guard let action = tapActionHandler else { return }
-        action(images)
+        action(images, goodsLabel.text ?? "")
     }
 }

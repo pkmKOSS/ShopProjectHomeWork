@@ -1,17 +1,16 @@
 import Foundation
 
-let stringX = "фывафыв афыва>asdasdasd<\\a>фывафыва"
+let stringX = "фывафыв афыва>asdasdfa234234234asdasd<\\a>фывафыва"
 
 
 extension NSAttributedString {
 func getAhchorFromURL() -> String? {
-    let regexForStringWithAnchor = ">[A-z]*<.a>"
-    let regexForAnchor = ">.*<"
+    let regexForStringWithAnchor = ">.*<"
     guard self.string.contains("<\\a>") else { return nil }
     let stringWithAnchor = self.string.matchesWithRegex(for: regexForStringWithAnchor).first
-    let anchor = stringWithAnchor?.matchesWithRegex(for: regexForAnchor).first
+    let anchor = stringWithAnchor?.matchesWithRegex(for: "[\\w]+").first
     return anchor
-}
+    }
 }
 
 extension String {

@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
-        let tabBarController = MainTabBarController()
+        let tabBarController = OnboardingPageViewController()
         self.window?.rootViewController = tabBarController
 
         window?.makeKeyAndVisible()
